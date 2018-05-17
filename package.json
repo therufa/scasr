@@ -1,0 +1,39 @@
+{
+  "name": "scasr",
+  "version": "1.0.0",
+  "description": "siplistic web api for scanimage",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/therufa/scasr.git"
+  },
+  "keywords": [
+    "scanimage",
+    "scan",
+    "scanner",
+    "scanning",
+    "linux-scanner",
+    "remote-scanner"
+  ],
+  "author": "Attila Max Ruf <therufa@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/therufa/scasr/issues"
+  },
+  "homepage": "https://github.com/therufa/scasr#readme",
+  "dependencies": {
+    "compression": "^1.7.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "decode-tiff": "^0.2.1",
+    "express": "^4.16.3",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "pug": "2.0.0-beta11",
+    "sharp": "^0.20.2"
+  }
+}
