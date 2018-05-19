@@ -4,7 +4,7 @@ const { Writable } = require('stream')
 
 
 class WritableImageStream extends Writable {
-  constructor(cb, ...args) {
+  constructor(...args) {
     super(...args)
 
     this.buffer = []
@@ -20,9 +20,15 @@ class WritableImageStream extends Writable {
   }
 }
 
-module.exports = function scan() {
-  const scan = spawn('bash', ['./scan.sh', 'yoga.jpg'])
+const buildArgs = (opts) => {
+  return Object.keys(opts).reduce((agg, key) => [...agg, `--${key}`, opts[key]], [])
+}
+
+module.exports = function scan(opts) {
+  const args = buildArgs(opts)
   const buff = new WritableImageStream()
+
+  const scan = spawn('bash', ['./scan.sh', ...args])
 
   const promise = new Promise((resolve, reject) => {
     buff.on('finish', (err, buffer) => {
