@@ -20,7 +20,7 @@ class WritableImageStream extends Writable {
   }
 }
 
-const buildArgs = (opts) => {
+const buildArgs = (opts = {}) => {
   return Object.keys(opts).reduce((agg, key) => [...agg, `--${key}`, opts[key]], [])
 }
 
@@ -31,8 +31,20 @@ module.exports = function scan(opts) {
   const scan = spawn('bash', ['./scan.sh', ...args])
 
   const promise = new Promise((resolve, reject) => {
+    scan.on('close', (code, sig) => {
+      if (code !== 0) {
+        reject(`unexpected error: ${sig}`)
+      }
+    })
+
     buff.on('finish', (err, buffer) => {
-      resolve(buffer)
+      if (err) {
+        reject(err)
+      }
+
+      if (buffer.length) {
+        resolve(buffer)
+      }
     })
 
     buff.on('error', (err) => {

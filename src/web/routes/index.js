@@ -5,14 +5,27 @@ const scanimage = require('../../scanimage')
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Scasm' });
-});
+})
 
-router.get('/image', async (req, res) => {
-  res.contentType('image/jpeg')
+router.get('/scan', async (req, res, next) => {
+  const { query: {
+    mode = undefined,
+    brightness = undefined
+  } } = req
 
-  const image = await scanimage()
+  const opts = {
+    mode,
+    brightness
+  }
 
-  res.end(image)
+  try {
+    const image = await scanimage(opts)
+
+    res.contentType('image/jpeg')
+    res.end(image)
+  } catch (err) {
+    next(err)
+  }
 })
 
 module.exports = router;
