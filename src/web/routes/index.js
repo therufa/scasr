@@ -3,11 +3,7 @@ const router = express.Router();
 const scanimage = require('../../scanimage')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Scasm' });
-})
-
-router.get('/scan', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   const { query: {
     mode = undefined,
     brightness = undefined

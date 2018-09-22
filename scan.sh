@@ -1,3 +1,4 @@
 #!/bin/bash
 
-cat c09.jpg
+# cat ~/Pictures/image.jpg
+scanimage --resolution=600 | pnmtojpeg
