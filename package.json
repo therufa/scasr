@@ -28,13 +28,16 @@
   "dependencies": {
     "compression": "^1.7.3",
     "cookie-parser": "~1.4.3",
+    "cryptiles": "^4.1.2",
     "debug": "~2.6.9",
     "decode-tiff": "^0.2.1",
     "express": "^4.16.3",
+    "hawk": "^7.0.7",
     "http-errors": "~1.6.2",
     "morgan": "^1.9.1",
     "polo": "^0.8.1",
     "pug": "2.0.0-beta11",
+    "request": "^2.88.0",
     "sharp": "^0.20.8"
   }
 }
